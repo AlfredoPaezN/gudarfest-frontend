@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-6 p-4" id="profile-box">
+      <div class="text-center">
+        <label class="font-2">{{ this.idPerson ? "Update" : "Create" }} visitor </label>
+      </div>
+
+      <br />
+      <form [formGroup]="form">
+        <div class="media ml-2">
+          <img src="{{ chargeImg }}" height="180" />
+
+          <div class="custom-file mt-4">
+            <h5 class="ml-2 mt-3">Choose a profile picture</h5>
+            <input #imageImput type="file" class="custom-file-input mt-5 ml-2" m id="inputGroupFile01" accept=".jpg, .png, .jpeg"
+              name="photo" (change)="processFile(imageImput)" />
+            <label class="custom-file-label mt-5 ml-2" for="inputGroupFile01">Choose a profile picture.</label>
+          </div>
+        </div>
+        <hr class="mt-4" />
+
+        <div class="form-group col-6" style="float: left">
+          <label>First name</label>
+          <input #name class="form-control" type="text" name="name" placeholder="First name"
+          formControlName="name" />
+          <div class="invalid-feedback"></div>
+        </div>
+
+        <div class="form-group col-6" style="float: right">
+          <label>Lastname</label>
+          <input class="form-control" type="text" name="lastname" placeholder="Last name"
+          formControlName="lastname" />
+          <div class="invalid-feedback"></div>
+        </div>
+
+        <div class="form-group ml-3 mr-3">
+          <label>Email</label>
+          <input class="form-control" type="email" name="email" placeholder="Email" formControlName="email" />
+          <div class="invalid-feedback"></div>
+        </div>
+
+        <div class="form-group ml-3 mr-3">
+          <label>Description</label>
+          <textarea class="form-control" name="description" formControlName="description"></textarea>
+
+          <div class="invalid-feedback"></div>
+        </div>
+        <div>
+          <div class="col-6" style="float: left">
+            <button (click)="savePerson()" type="button" href="" class="btn btn-outline-info btn-block mt-1">
+              Save
+            </button>
+          </div>
+
+        </div>
+        <div *ngIf='idPerson' class="col-6" style="float: right">
+          <button (click)="deletePerson()" type="button" id="btn-delete" class="btn btn-outline-danger btn-block mt-1" >
+            Delete
+          </button>
+        </div>
+        <div *ngIf='!idPerson' class="col-6" style="float: right">
+          <button (click)="toBack()" type="button" class="btn btn-outline-danger btn-block btn-back mt-1" >
+            Back
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

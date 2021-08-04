@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../login/shared/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 
 
 @Component({
@@ -18,6 +18,5 @@ export class NavBarComponent implements OnInit {
   }
   LogoutEvent() {
     this.authService.logoutUser()
-    return this.router.navigate(['login'])
 }
 }

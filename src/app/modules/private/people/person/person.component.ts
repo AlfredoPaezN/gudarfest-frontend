@@ -8,8 +8,8 @@ import { PeopleService } from 'src/app/core/services/people.service';
 
 @Component({
   selector: 'app-person-detail',
-  templateUrl: './person-detail.component.html',
-  styleUrls: ['./person-detail.component.css']
+  templateUrl: './person.component.html',
+  styleUrls: ['./person.component.css']
 })
 
 export class PersonDetailComponent implements OnInit {
@@ -18,6 +18,7 @@ export class PersonDetailComponent implements OnInit {
   public chargeImg: string = '';
   selectedImage!: File;
   form: FormGroup;
+  url: string | ArrayBuffer | null | undefined;
 
 
 

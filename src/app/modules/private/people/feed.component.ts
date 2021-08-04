@@ -11,18 +11,19 @@ import { PeopleService } from 'src/app/core/services/people.service';
 
 export class FeedComponent implements OnInit {
   public people: any = {}
-
   constructor(private feed: PeopleService) {
+
   }
 
   ngOnInit(): void {
     const feedObserver: Observer<any> = {
-      next: value => this.people = value,
+      next: value  => {
+        this.people = value
+      },
       error: error => console.log,
       complete: () => { }
     }
 
     this.feed.readAll().subscribe(feedObserver)
   }
-
 }

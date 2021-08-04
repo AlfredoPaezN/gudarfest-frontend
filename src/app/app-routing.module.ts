@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FeedComponent } from './components/feed/feed.component';
-import { LoginComponent } from './components/login/login.component';
-import { PersonDetailComponent } from './components/person-detail/person-detail.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { LoginGuard } from './core/guards/login.guard';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
-  {path: '', component: FeedComponent, canActivate: [AuthGuard]},
-  {path: 'person-detail', component: PersonDetailComponent, canActivate: [AuthGuard]},
-  {path: 'person-detail/:id', component: PersonDetailComponent, canActivate: [AuthGuard]}
+  {
+    path: '',
+    loadChildren: () => import('./modules/private/private.module').then(
+      m =>
+        m.PrivateModule
+
+    ), canActivate: [AuthGuard]
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./modules/public/public.module').then(
+      m =>
+        m.PublicModule
+
+    ), canActivate: [LoginGuard]
+  },
 ];
 
 @NgModule({

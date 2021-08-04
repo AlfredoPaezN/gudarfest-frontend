@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="container">
+    <div class="justify-content-center">
+      <p-table [value]="personList">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Description</th>
+            <th>Manage</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-person>
+          <tr>
+            <td>{{ person.id }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.email }}</td>
+            <td>{{ person.description }}</td>
+            <td>
+              <a
+                href="http://localhost:4200/person/{{ person.id }}"
+                class="btn btn-primary"
+                >View Visitor</a
+              >
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
